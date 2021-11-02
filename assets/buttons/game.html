@@ -9,17 +9,116 @@
  <title>Stomped</title>
 </head>
 <body class="game__context">
+
  <header class="game__header">
-  <h3 id="game__title">Stomped</h3>
-  <ul class="game__nav">
-   <li><a href="../../index.html">Home</a></li>
-   <li><a href="settings.html">Settings</a></li>
-   <li><a href="credits.html">Credits</a></li>
-   <li><a href="about.html">About us</a></li>
-  </ul>
+  <a href="../../index.html"><img src="" alt="arrow"></a>
  </header>
+
  <main class="game__main">
-  <canvas></canvas>
- </main> 
+  <canvas id="canvas" width="1280" height="720"></canvas>
+ </main>
+
+ <script type="text/javascript">
+   var context, controller, rectangle, loop;
+
+   context = document.getElementById("canvas").getContext("2d");
+
+   
+
+   rectangle = {
+     height:32, // Høyden på karakteren - variabel
+     jumping:true,
+     width:32, // Bredden på karakteren - variabel
+     x:640, // Midten av canvas - VARIABEL
+     x_velocity:0,
+     y:0,
+     y_velocity:0,
+   };
+   // her danner vi kontrollene til selve spillet. Dette er venstre, opp, høyre
+   controller = {
+
+       left:false,
+       right:false,
+       up:false,
+       keyListener:function(event) {
+
+           var key_state = (event.type == "keydown")?true:false;
+
+           switch(event.keyCode) {
+
+               case 37: // Venstre tast
+                   controller.left = key_state;
+                   break;
+               case 38: // Opp tast
+                   controller.up = key_state;
+                   break;
+               case 39: // Høyre tast
+                   controller.right = key_state;
+                   break;
+           }
+       }
+   };
+
+   
+   loop = function() {
+       // her danner vi jump funksjon
+       if (controller.up && rectangle.jumping == false) { 
+
+           rectangle.y_velocity -= 30; // Høyden til 1 hopp
+           rectangle.jumping = true;
+       }
+       // Her danner vi hastighet for left click
+       if (controller.left) {
+           rectangle.x_velocity -= 0.5;
+       }
+       // Her danner vi hastighet for right click
+       if (controller.right) {
+           rectangle.x_velocity += 0.5;
+       }
+
+       rectangle.y_velocity += 1; // Tyngdekraft
+       rectangle.x += rectangle.x_velocity; // Rektangelens x verdi er lik farten
+       rectangle.y += rectangle.y_velocity; // Rektalngelens y verdi er lik farten
+       rectangle.x_velocity *= 0.9 // Friksjon (Sier at hastigheten skal ganges med 0.9 for å skape en slow down effekt)
+       rectangle.y_velocity *= 0.9 // Friskjon
+
+       // Hva skjer hvis den faller under bakken (Canvas størrelse, gulv høyde, figur størrelse fra toppen)
+       if (rectangle.y > 720/*Variabel*/ - 16 - 32) {
+           rectangle.jumping = false;
+           rectangle.y = 720 - 16 /*Variabel*/ - 32;
+           rectangle.y_velocity = 0;
+       }
+
+       // Hva skjer hvis rektangelen går til venstre for skjermen
+       if (rectangle.x < 0) {
+           rectangle.x += 1;
+           rectangle.x_velocity = 0;
+       } 
+       // Hva skjer hvis rektangelen går til høyre for skjermen
+       else if (rectangle.x > 1248 /*Variabel*/) {
+           rectangle.x -= 0.5;
+           rectangle.x_velocity = 0;
+       }
+
+       context.fillStyle = "#202020";
+       context.fillRect(0,0,1280,720); // x,y,bredde,høyde -variabel
+       context.fillStyle = "#ff0000"// Rød
+       context.beginPath();
+       context.rect(rectangle.x,rectangle.y,rectangle.width,rectangle.height);
+       context.fill();
+       context.strokeStyle = "#202830";
+       context.lineWidth = 4;
+       context.moveTo(0,707); // variabel
+       context.lineTo(1280,707); // variabel
+       context.stroke();
+       // Oppdater når nettleser er klar for å tegne igjen
+       window.requestAnimationFrame(loop);
+   } 
+   
+   
+   window.addEventListener("keydown", controller.keyListener);
+   window.addEventListener("keyup", controller.keyListener);
+   window.requestAnimationFrame(loop);
+ </script>
 </body>
 </html>

@@ -1,10 +1,12 @@
-/* 
+/*
    =============
     custom font
    =============
 */
 
-/* 
+
+
+/*
    ===============
     global styles
    ===============
@@ -17,7 +19,12 @@
  margin: 0;
 }
 
-/* 
+body {
+   background-image:url(https://cdn.discordapp.com/attachments/889804199955693569/897793072597958666/Test_background.png);
+
+}
+
+/*
    ===========
     variables
    ===========
@@ -37,20 +44,14 @@
  )
 }
 
-/* 
+/*
    ===================
     typographi styles
    ===================
 */
 
-.game__header h3 {
-   font-size: 2em;
-   background-image: var(--gradient) ;
-   -webkit-background-clip: text;
-   color: transparent;
-}
 
-/* 
+/*
    ===================
     index.html styles
    ===================
@@ -62,29 +63,31 @@
    align-items: center;
 }
 
+.index__title img {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .index__nav {
    list-style-type: none;
    padding: 0;
 }
 
 .index__nav li {
- 
    margin: 50px;
 }
 .index__nav a {
    background-color: white;
-   border-left: 4px var(--clr-mc-1) solid;
-   border-bottom: 4px var(--clr-mc-2) solid;
-   border-top: 4px var(--clr-mc-3) solid;
-   border-right: 4px var(--clr-mc-4) solid;
-   border-radius: 0 50px 50px 0;
-   
-   padding: 5px 60px;
+   border: black solid 2px;
+   border-radius: 50px;
+
+   padding: 10px 60px;
    text-decoration: none;
+   font-size: 1.5em;
    color: black;
 
    display: flex;
-   justify-content: center;  
+   justify-content: center;
 }
 
 .index__nav a:hover,
@@ -96,81 +99,193 @@
 
 
 
-/* 
+/*
    ==================
     game.html styles
    ==================
 */
+
+/*Kan gjøres til en felles class for hver side med pil*/
 .game__header {
    margin-top: 15px;
    margin-left: 40px;
    display: flex;
 }
 
-
-.game__nav {
-   list-style-type: none;
-   padding: 0;
-   display: flex;
-   margin: auto;
-}
-
-.game__nav li {
-   margin-right: 100px;
-}
-
-.game__nav a{
-   background-color: white;
-   border-left: 4px var(--clr-mc-1) solid;
-   border-bottom: 4px var(--clr-mc-2) solid;
-   border-top: 4px var(--clr-mc-3) solid;
-   border-right: 4px var(--clr-mc-4) solid;
-   border-radius: 0 50px 50px 0;
-   
-   padding: 5px 60px;
-   text-decoration: none;
-   color: black;
-
-   display: flex;
-   justify-content: center;  
-}
-
-.game__nav a:hover,
-.game__nav a:focus {
-   background-color: ghostwhite;
-}
-
 .game__main {
    display: flex;
    justify-content: center;
-
-   margin-top:50px;
+   margin-top:20px;
 }
 
 canvas {
-   width: 80%;
-   height:70%;
-   background-color: violet;
+   background-color: rgb(7, 6, 34);
 }
 
-/* 
+/*
    ======================
     settings.html styles
    ======================
 */
 
-/* 
+.settings__content {
+   display: grid;
+   font-size: 2em;
+   grid-template-columns: 2em 1fr 1fr 2em;
+   gap: 2em;
+   margin-top: 4%;
+
+}
+.settings__content h3 {
+   color: white;
+   padding: 5px 5px;
+   position: relative;
+   z-index: 1;
+ }
+ .settings__content h3::after {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width:100%;
+   height:100%;
+   background: rgb(0,0,0,0.79);
+   z-index: -1;
+ }
+
+ .settings__content p {
+   color: black;
+   background-color: rgb(255,255,255,0.6);
+   padding: 5px 5px;
+   z-index: 1;
+ }
+
+
+.colum1 {
+   grid-column: 2/3;
+}
+.colum2 {
+   grid-column: 3/4;
+}
+
+
+
+
+
+/*
    =====================
     credits.html styles
    =====================
 */
 
+.credits__main {
+   display: grid;
+   grid-template-columns: 2em 1fr 1fr 1fr 2em;
+   font-size: 2em;
+}
 
-/* 
+.credits__title {
+   margin-top: 20px;
+}
+
+.credits__content{
+   grid-column: 2/4;
+   margin-top: 50px;
+
+}
+
+.credits__content h3 {
+   color: white;
+   padding: 5px 5px;
+   position: relative;
+   z-index: 1;
+ }
+ .credits__content h3::after {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width:100%;
+   height:100%;
+   background: rgb(0,0,0,0.79);
+   z-index: -1;
+ }
+
+ .credits__content p {
+   color: black;
+   background-color: rgb(255,255,255,0.6);
+   padding: 5px 5px;
+   z-index: 1;
+ }
+
+
+/*
    ===================
     about.html styles
    ===================
 */
+.about__header {
+   margin-top: 15px;
+   margin-left: 40px;
+   display: flex;
+}
 
+.about__main {
+   display: grid;
+   grid-template-columns: 2em 1fr 1fr 1fr 1fr 1em;
+   gap: 2em;
+   margin-top: 5%;
+   font-size: 2em;
+
+}
+
+.developers {
+   display: flex;
+   gap: 2em;
+}
+
+.developers__title{
+   margin-top: -75px;
+   margin-bottom: 20px;
+}
+
+.developers img {
+   max-width: 360px;
+   max-height: 200px;
+}
+
+.row1,
+.row2,
+.row3 {
+   grid-column: 2/6;
+
+}
+
+.hoyre {
+   background: rgb(255,255,255,0.6);
+ }
+
+.hoyre h3 {
+   color: white;
+   padding: 5px 5px;
+   position: relative;
+   z-index: 1;
+ }
+ .hoyre h3::after {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width:100%;
+   height:100%;
+   background: rgb(0,0,0,0.79);
+   z-index: -1;
+ }
+
+ .hoyre p {
+   color: black;
+   padding: 5px 5px;
+   z-index: 1;
+ }
 
 
