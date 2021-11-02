@@ -4,6 +4,8 @@
    =============
 */
 
+
+
 /* 
    ===============
     global styles
@@ -43,12 +45,6 @@
    ===================
 */
 
-.game__header h3 {
-   font-size: 2em;
-   background-image: var(--gradient) ;
-   -webkit-background-clip: text;
-   color: transparent;
-}
 
 /* 
    ===================
@@ -108,48 +104,22 @@
 }
 
 
-.game__nav {
-   list-style-type: none;
-   padding: 0;
-   display: flex;
-   margin: auto;
-}
+
 
 .game__nav li {
    margin-right: 100px;
 }
 
-.game__nav a{
-   background-color: white;
-   border-left: 4px var(--clr-mc-1) solid;
-   border-bottom: 4px var(--clr-mc-2) solid;
-   border-top: 4px var(--clr-mc-3) solid;
-   border-right: 4px var(--clr-mc-4) solid;
-   border-radius: 0 50px 50px 0;
-   
-   padding: 5px 60px;
-   text-decoration: none;
-   color: black;
-
-   display: flex;
-   justify-content: center;  
-}
-
-.game__nav a:hover,
-.game__nav a:focus {
-   background-color: ghostwhite;
-}
 
 .game__main {
    display: flex;
    justify-content: center;
 
-   margin-top:50px;
+   margin-top:20px;
 }
 
 canvas {
-   width: 80%;
-   height:70%;
+   width: 85%;
    background-color: violet;
 }
 
@@ -173,4 +143,33 @@ canvas {
 */
 
 
+.about__main {
+   display: grid;
+   grid-template-columns: 2em 1fr 1fr 1fr 1fr 1fr 1em;
+   gap: 2em;
+   margin: 5px;
+
+}
+
+.developers {
+   display: flex;
+   gap: 2em;
+}
+
+.developers img {
+   max-width: 360px;
+   max-height: 200px;
+}
+
+.developers__title {
+   grid-column: 2/-1;
+   margin-left: 12.6%;
+}
+
+.row1,
+.row2,
+.row3 {
+   grid-column: 2/-1;
+   
+}
 
